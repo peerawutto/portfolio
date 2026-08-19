@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Peerawut - Independent designer." />
+    <meta name="description" content="Peerawut - peerawut's portfolio." />
     <title>Peerawut - Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,21 +25,18 @@
   </head>
   <body>
     <main>
-      <nav class="nav" aria-label="Main navigation"><a class="wordmark" href="#top">PW</a><p>Independent designer<br />Bangkok, TH</p><a href="#contact">Contact &#8599;</a></nav>
-      <header class="hero" id="top">
-        <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-          <source src="GettyImages-1204863874.mp4" type="video/mp4" />
-        </video>
-        <p class="eyebrow">Portfolio / 2026</p>
+      <nav class="nav" aria-label="Main navigation"><a class="wordmark" href="#top">PW</a><p>Bangna<br />Bangkok, TH</p><a href="#contact">Contact &#8599;</a></nav>
+      <header class="hero" id="top" style="background-color: #d8dfdf;">
+        <div id="hero-background" class="absolute inset-0 overflow-hidden" aria-hidden="true"></div>
         <div class="hero-title-group"><h1>PEERAWUT<span>.</span></h1><p class="typewriter"><span id="typewriter-text"></span></p></div>
-        <div class="hero-foot"><p>Designer working across identity,<br />digital, and moving image.</p><a href="#selected">Scroll to explore &darr;</a></div>
-        <div class="hero-sticker hero-sticker-years" aria-hidden="true">7+ YEARS<br />OF<br />MAKING THINGS</div>
+        <div class="hero-foot"><p>Designer working across identity,<br />digital, and moving image.</p><a href="#selected">Scroll to explore &darr;</a></div><div class="hero-sticker hero-sticker-years" aria-hidden="true">7+ YEARS<br />OF<br />MAKING THINGS</div>
         <div class="hero-sticker hero-sticker-stock" aria-hidden="true">STOCK<br />FOOTAGE<br />SURFER</div>
         <div class="hero-sticker hero-sticker-ideas" aria-hidden="true">IDEAS<br />IN<br />MOTION</div>
         <div class="hero-sticker hero-sticker-switch" aria-hidden="true">NINTENDO<br />SWITCH 2<br />OWNER :)</div>
       </header>
 
-      <section class="about section-rule"><p class="eyebrow">01 / About</p><p>I shape clear identities and expressive systems for brands, culture, and the everyday.</p><small>Selected independent work<br />and collaborations.</small></section>
+      <section class="about section-rule"><p class="eyebrow">01 / About</p><p>I create visual identities and expressive experiences across design, motion, culture, and everyday life<br />
+         <br />with a focus on making ideas feel clear, thoughtful, and alive.</p></section>
 
       <section class="work" id="selected" hidden>
         <div class="section-heading"><p class="eyebrow">02 / Selected work</p><p>(Scroll / drag)</p></div>
@@ -84,6 +81,8 @@
       <a class="floating-top" href="#top" aria-label="Back to top">&uarr;</a>
     </main>
     <script>
+      // This script block is intentionally left in place.
+      // The following script tags will be added after it.
       const company = document.querySelector('#company-work');
       const topButton = document.querySelector('.floating-top');
       const output = document.querySelector('#typewriter-text');
@@ -152,6 +151,11 @@
           slider.classList.remove('is-dragging');
         }));
       }
+    </script>
+    <script src="https://unpkg.com/ogl"></script>
+    <script src="background.js"></script>
+    <script>
+      initStudioBackground(document.getElementById('hero-background'));
     </script>
   </body>
 </html>
