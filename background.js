@@ -1,4 +1,5 @@
 import { Mesh, Program, Renderer, Triangle } from "https://esm.sh/ogl@1.0.11";
+
 const VERTEX_SHADER = `#version 300 es
 in vec2 position;
 void main() {
