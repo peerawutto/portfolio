@@ -3,43 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Peerawut - Independent designer." />
+    <meta name="description" content="Peerawut - peerawut's portfolio." />
     <title>Peerawut - Designer</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2" />
+    <link rel="shortcut icon" href="favicon.svg?v=2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260826" />
     <style>
-      .freelance-logos {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 2rem;
-        align-items: center;
-        margin-top: 2rem;
-      }
-      .freelance-logos img {
-        max-width: 300px;
-        width: 100%;
-      }
+      .freelance-logos { margin-top: 2rem; overflow: hidden; }
+      .logo-marquee { display: flex; width: max-content; animation: logo-marquee 36s linear infinite; }
+      .logo-marquee-group { display: flex; flex: none; align-items: center; gap: 1.25rem; padding-right: 1.25rem; }
+      .logo-marquee-item { display: grid; width: 180px; height: 96px; flex: none; place-items: center; padding: 14px; background: #f4f1ea; }
+      .logo-marquee-item img { display: block; max-width: 100%; max-height: 68px; width: 100%; height: 100%; object-fit: contain; }
+      @keyframes logo-marquee { to { transform: translateX(-50%); } }
+      @media (max-width: 700px) { .logo-marquee-group { gap: .75rem; padding-right: .75rem; } .logo-marquee-item { width: 130px; height: 76px; padding: 10px; } .logo-marquee-item img { max-height: 56px; } }
+      @media (prefers-reduced-motion: reduce) { .logo-marquee { animation-play-state: paused; } }
     </style>
   </head>
   <body>
     <main>
-      <nav class="nav" aria-label="Main navigation"><a class="wordmark" href="#top">PW</a><p>Independent designer<br />Bangkok, TH</p><a href="#contact">Contact &#8599;</a></nav>
-      <header class="hero" id="top">
-        <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-          <source src="GettyImages-1204863874.mp4" type="video/mp4" />
-        </video>
-        <p class="eyebrow">Portfolio / 2026</p>
+      <nav class="nav" aria-label="Main navigation"><a class="wordmark" href="#top">PW</a><p>Bangna<br />Bangkok, TH</p><a href="#contact">Contact &#8599;&#xfe0e;</a></nav>
+      <header class="hero" id="top" style="background-color: #d8dfdf;">
+        <div id="hero-background" class="absolute inset-0 overflow-hidden" aria-hidden="true"></div>
         <div class="hero-title-group"><h1>PEERAWUT<span>.</span></h1><p class="typewriter"><span id="typewriter-text"></span></p></div>
-        <div class="hero-foot"><p>Designer working across identity,<br />digital, and moving image.</p><a href="#selected">Scroll to explore &darr;</a></div>
-        <div class="hero-sticker hero-sticker-years" aria-hidden="true">7+ YEARS<br />OF<br />MAKING THINGS</div>
+        <div class="hero-foot"><p>Designer working across identity,<br />digital, and moving image.</p><a href="#company-work">Scroll to explore &darr;</a></div><div class="hero-sticker hero-sticker-years" aria-hidden="true">7+ YEARS<br />OF<br />MAKING THINGS</div>
         <div class="hero-sticker hero-sticker-stock" aria-hidden="true">STOCK<br />FOOTAGE<br />SURFER</div>
         <div class="hero-sticker hero-sticker-ideas" aria-hidden="true">IDEAS<br />IN<br />MOTION</div>
         <div class="hero-sticker hero-sticker-switch" aria-hidden="true">NINTENDO<br />SWITCH 2<br />OWNER :)</div>
       </header>
 
-      <section class="about section-rule"><p class="eyebrow">01 / About</p><p>I shape clear identities and expressive systems for brands, culture, and the everyday.</p><small>Selected independent work<br />and collaborations.</small></section>
+      <section class="about section-rule"><p class="eyebrow">About</p><p>I create visual identities and expressive experiences across design, motion, culture, and everyday life<br />
+         <br />with a focus on making ideas feel clear, thoughtful, and alive.</p></section>
 
       <section class="work" id="selected" hidden>
         <div class="section-heading"><p class="eyebrow">02 / Selected work</p><p>(Scroll / drag)</p></div>
@@ -51,39 +47,85 @@
       </section>
 
       <section class="companies section-rule" id="company-work">
-        <div class="section-heading"><p class="eyebrow">02 / Company work</p><p>Selected collaborations</p></div>
+        <div class="section-heading"><p class="eyebrow">Company work</p></div>
         <div class="company-list">
-          <a href="#adtech"><span>01</span><strong>AdTech Innovation</strong><em>2024 - Present</em><b>&nearr;</b></a>
-          <a href="#konvy"><span>02</span><strong>Konvy International</strong><em>2024</em><b>&nearr;</b></a>
-          <a href="#exotic"><span>03</span><strong>Exotic Quixotic</strong><em>2022 - 2024</em><b>&nearr;</b></a>
-          <a href="#joox"><span>04</span><strong>Tencent / JOOX Thailand</strong><em>2019 - 2022</em><b>&nearr;</b></a>
-          <a href="#freelance"><span>05</span><strong>Freelance</strong><em>Selected clients</em><b>&nearr;</b></a>
+          <a href="#adtech"><span>01</span><strong>AdTech Innovation</strong><em>2024 - Present</em><b>&nearr;&#xfe0e;</b></a>
+          <a href="#konvy"><span>02</span><strong>Konvy International</strong><em>2024</em><b>&nearr;&#xfe0e;</b></a>
+          <a href="#exotic"><span>03</span><strong>Exotic Quixotic</strong><em>2022 - 2024</em><b>&nearr;&#xfe0e;</b></a>
+          <a href="#joox"><span>04</span><strong>Tencent / JOOX Thailand</strong><em>2019 - 2022</em><b>&nearr;&#xfe0e;</b></a>
+          <a href="#go-grrrls"><span>05</span><strong>GO GRRRLS</strong><em>Event visuals</em><b>&nearr;&#xfe0e;</b></a>
+          <a href="#freelance"><span>06</span><strong>Freelance</strong><em>Selected clients</em><b>&nearr;&#xfe0e;</b></a>
         </div>
       </section>
 
 
       <section class="experience section-rule" id="experience">
-        <div class="section-heading"><p class="eyebrow">03 / Experience</p><p>Roles and responsibilities</p></div>
+        <div class="section-heading"><p class="eyebrow">Experience</p><p>Roles and responsibilities</p></div>
         <div class="experience-list">
-          <article id="adtech"><span>01</span><div><h2>AdTech<br />Innovation</h2><small>Broadcasting and Multimedia Designer</small></div><div><small>Nov 2024 - Present</small><p>Leading day-to-day creative and media support for the Hong Kong and Thailand teams. The role covers campaign and social graphics, video editing, color grading, motion graphics, animation, AI-assisted image and video generation, and visual direction across regional teams.</p></div></article>
-          <article id="konvy"><span>02</span><div><h2>Konvy<br />International</h2><small>Senior Video Content &amp; Graphic Designer</small></div><div><small>Feb 2024 - Oct 2024</small><p>Conceptualized and produced content for products, campaigns, and social advertising. Edited video, created motion graphics, and partnered with marketing teams to keep each visual aligned with the brand.</p></div><div class="media"><iframe class="reel" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1553345655232193&amp;width=500&amp;show_text=false&amp;height=889&amp;appId" title="Konvy reel 1" scrolling="no" allow="autoplay; picture-in-picture" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe><iframe class="reel" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1754664718270599&amp;width=500&amp;show_text=false&amp;height=889&amp;appId" title="Konvy reel 2" scrolling="no" allow="autoplay; picture-in-picture" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe></div></article>
+          <article id="adtech"><span>01</span><div><h2>AdTech<br />Innovation</h2><small>Broadcasting and Multimedia Designer</small></div><div><small>Nov 2024 - Present</small><p>Leading day-to-day creative and media support for the Hong Kong and Thailand teams. The role covers campaign and social graphics, video editing, color grading, motion graphics, animation, AI-assisted image and video generation, and visual direction across regional teams.</p></div><div class="media"><iframe loading="lazy" src="https://drive.google.com/file/d/1GPSWD0efvGQcxTmpb70hJUlC2GIOiPxM/preview" title="AdTech video 1" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1Fx2ycMuIGagA-EBZtNsiJQ9z2WbdARnc/preview" title="AdTech video 2" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1f5ztmFAk_fGSwMSDm_Q5MvlJbebwPdz_/preview" title="AdTech video 3" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1fHGi_t_sOahDQR6sPF0kXmk_KIu9Lkd-/preview" title="AdTech video 4" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1Lt5R6Jr__iuh6LdqG8wJbd9Pt-mMy68f/preview" title="AdTech video 5" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1yBu82awId2KU3i-F1QlLdQOHeP7GqPcl/preview" title="AdTech video 6" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1BjJaF185Xy4SQd1gB5QPIkIWcqqwUDVn/preview" title="AdTech video 7" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1YVwL4or8Ymg3fuk3JR5_Pm3fO9uoLNCN/preview" title="AdTech video 8" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1TuFGyLu0naY-JPB3Qy8U-9flioZo7vD8/preview" title="AdTech video 9" allow="autoplay; fullscreen" allowfullscreen></iframe></div></article>
+          <article id="konvy"><span>02</span><div><h2>Konvy<br />International</h2><small>Senior Video Content &amp; Graphic Designer</small></div><div><small>Feb 2024 - Oct 2024</small><p>Conceptualized and produced content for products, campaigns, and social advertising. Edited video, created motion graphics, and partnered with marketing teams to keep each visual aligned with the brand.</p></div><div class="media"><iframe loading="lazy" class="reel" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1553345655232193&amp;width=500&amp;show_text=false&amp;height=889&amp;appId" title="Konvy reel 1" scrolling="no" allow="autoplay; picture-in-picture" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe><iframe loading="lazy" class="reel" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1754664718270599&amp;width=500&amp;show_text=false&amp;height=889&amp;appId" title="Konvy reel 2" scrolling="no" allow="autoplay; picture-in-picture" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe></div></article>
           <article id="exotic"><span>03</span><div><h2>Exotic<br />Quixotic</h2><small>Video Editor / Videographer</small></div><div><small>May 2022 - Feb 2024</small><p>Developed concepts and storyboards, directed location and studio shoots, created logos and motion design, planned lighting and sound, and coordinated post-production teams.</p></div><div class="media">
-            <iframe src="https://www.youtube.com/embed/ZmtAEsxkQjo?si=0Oxoohv0z9j7R3uL" title="Exotic video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/g3zcI-dlvhM?si=2QwMmteR60AfKwuR" title="Exotic video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/V9s8Utag9i8?si=hBql_FXAB5tgt8dl" title="Exotic video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/xIaDZvJRnlw?si=BnZo66ZZYOrMNLIb" title="Exotic video 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/-byZ-mAo2mM?si=iYF6hE9TamKHqUy6" title="Exotic video 5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/fUjNMRmYJlc?si=VRrY5PL-c62IomEl" title="Exotic video 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/MP-WxYpWNl0?si=kFjOf-rHszbR0x_0" title="Exotic video 7" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/HzbTyFyeN-0?si=MJtqcMFZN3QCxUTl" title="Exotic video 8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/GpVw0tf3b-w?si=QhHApz9FulGLUHxl" title="Exotic video 9" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/r7h3zewO07g?si=WvD9SN1FuJxdfFyE" title="Exotic video 10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/V-4jTbld1lM?si=68vTXrjz9cmgxAHv" title="Exotic video 11" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/ZOj7ZIvGz88?si=sCBNkSSXfoQlgRoN" title="Exotic video 12" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></article>
-          <article id="joox"><span>04</span><div><h2>Tencent<br />(JOOX Thailand)</h2><small>Video Editor</small></div><div><small>Jun 2019 - Apr 2022</small><p>Worked with producers to develop video ideas and content. Edited footage, created motion graphics and visual elements, and maintained brand alignment with marketing teams.</p></div><div class="media"><iframe src="https://www.youtube.com/embed/9yq-SVRY7RA?si=3Ok7BXOp_Tslb3vs" title="JOOX video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/C34bm0Ke2l4?si=ar_bNOz7g2yJeJD2" title="JOOX video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe class="portrait" src="https://www.facebook.com/plugins/video.php?height=476&amp;href=https%3A%2F%2Fwww.facebook.com%2Fjooxth%2Fvideos%2F1141603219954187%2F&amp;show_text=false&amp;width=380&amp;t=0" title="JOOX Facebook video 1" scrolling="no" allow="autoplay; picture-in-picture" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe><iframe class="square" src="https://www.facebook.com/plugins/video.php?height=476&amp;href=https%3A%2F%2Fwww.facebook.com%2Fjooxth%2Fvideos%2F4852558431476911%2F&amp;show_text=false&amp;width=476&amp;t=0" title="JOOX Facebook video 2" scrolling="no" allow="autoplay; picture-in-picture" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe><iframe class="vertical" src="https://www.youtube.com/embed/wQB8HIlYmlA?si=9m2_MhDtuar7ohBA" title="JOOX video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></article>
-          <article id="freelance"><span>05</span><div><h2>Freelance<br />Studio</h2><small>Graphic and Motion Designer</small></div><div><small>Selected clients</small><p>Planned social media production, coordinated special projects, and developed artwork and motion graphics for product communication, campaigns, and artist releases. Clients include NT, Philips, i-dac, Hakuhodo International, Tourism Authority of Thailand, and Universal Music.</p></div></article>
-            <div class="freelance-logos">
-              <img src="NT_Logo.svg.webp" alt="NT Logo" />
-              <img src="Philips_logo_new.svg.webp" alt="Philips Logo" />
-              <img src="Universal TH.webp" alt="Universal Music Thailand Logo" />
+            <iframe loading="lazy" src="https://www.youtube.com/embed/ZmtAEsxkQjo?si=0Oxoohv0z9j7R3uL" title="Exotic video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/g3zcI-dlvhM?si=2QwMmteR60AfKwuR" title="Exotic video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/V9s8Utag9i8?si=hBql_FXAB5tgt8dl" title="Exotic video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/xIaDZvJRnlw?si=BnZo66ZZYOrMNLIb" title="Exotic video 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/-byZ-mAo2mM?si=iYF6hE9TamKHqUy6" title="Exotic video 5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/fUjNMRmYJlc?si=VRrY5PL-c62IomEl" title="Exotic video 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/MP-WxYpWNl0?si=kFjOf-rHszbR0x_0" title="Exotic video 7" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/HzbTyFyeN-0?si=MJtqcMFZN3QCxUTl" title="Exotic video 8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/GpVw0tf3b-w?si=QhHApz9FulGLUHxl" title="Exotic video 9" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/r7h3zewO07g?si=WvD9SN1FuJxdfFyE" title="Exotic video 10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/V-4jTbld1lM?si=68vTXrjz9cmgxAHv" title="Exotic video 11" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/ZOj7ZIvGz88?si=sCBNkSSXfoQlgRoN" title="Exotic video 12" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></article>
+          <article id="joox"><span>04</span><div><h2>Tencent<br />(JOOX Thailand)</h2><small>Video Editor</small></div><div><small>Jun 2019 - Apr 2022</small><p>Worked with producers to develop video ideas and content. Edited footage, created motion graphics and visual elements, and maintained brand alignment with marketing teams.</p></div><div class="media"><iframe loading="lazy" src="https://www.youtube.com/embed/9yq-SVRY7RA?si=3Ok7BXOp_Tslb3vs" title="JOOX video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/C34bm0Ke2l4?si=ar_bNOz7g2yJeJD2" title="JOOX video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" class="portrait" src="https://www.facebook.com/plugins/video.php?height=476&amp;href=https%3A%2F%2Fwww.facebook.com%2Fjooxth%2Fvideos%2F1141603219954187%2F&amp;show_text=false&amp;width=380&amp;t=0" title="JOOX Facebook video 1" scrolling="no" allow="autoplay; picture-in-picture" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe><iframe loading="lazy" class="square" src="https://www.facebook.com/plugins/video.php?height=476&amp;href=https%3A%2F%2Fwww.facebook.com%2Fjooxth%2Fvideos%2F4852558431476911%2F&amp;show_text=false&amp;width=476&amp;t=0" title="JOOX Facebook video 2" scrolling="no" allow="autoplay; picture-in-picture" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe><iframe loading="lazy" class="vertical" src="https://www.youtube.com/embed/wQB8HIlYmlA?si=9m2_MhDtuar7ohBA" title="JOOX video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></article>
+          <article id="go-grrrls"><span>05</span><div><h2>GO<br />GRRRLS</h2><small>Motion Graphics Designer</small></div><div><p>Motion graphics created for Go Grrrls, designed to be displayed on screen throughout the events. Each visual direction was developed around the theme and atmosphere of each party.</p></div><div class="media"><iframe loading="lazy" src="https://drive.google.com/file/d/1A4mxfMgI9z0WcgoMs1ORdTVrOAtVF026/preview" title="GO GRRRLS video 1" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/13WvaDDYiOZGbIOvN1k9RvhPTbPEBlW-z/preview" title="GO GRRRLS video 2" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1ySJh1fFeNir9mu7nMTztdvTm72UpiQbK/preview" title="GO GRRRLS video 3" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1NYEXWBu2XXa1RRI0rMtkM-AVHi37KCe8/preview" title="GO GRRRLS video 4" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/19O7AOgjB5H47iQ6iCWXmFXA9R3YoXiAP/preview" title="GO GRRRLS video 5" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1MMa1P9hnZT0xiFbNu2Uss_h6xGqlv2EZ/preview" title="GO GRRRLS video 6" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1q-YIk5C-LC6MmfyCjG63q6ZekI_0WDGU/preview" title="GO GRRRLS video 7" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1qS_Qf1msz0gsresubN4ll3yEjbhgCLGW/preview" title="GO GRRRLS video 8" allow="autoplay; fullscreen" allowfullscreen></iframe></div></article>
+          <article id="freelance"><span>06</span><div><h2>Freelance<br />Studio</h2><small>Graphic and Motion Designer</small></div><div><small>Selected clients</small><p>Planned social media production, coordinated special projects, and developed artwork and motion graphics for product communication, campaigns, and artist releases. Clients include Mirror Thailand, ONE31, NT, Philips, Tourism Authority of Thailand, and Universal Music.</p></div><div class="media"><iframe loading="lazy" src="https://www.youtube.com/embed/C3OeEGmt2R8" title="Freelance video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://www.youtube.com/embed/xQQDlWcrPD4?start=13" title="Freelance video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1750gDkgOFzOfIESChkfsvuk6HgGTf3G4/preview" title="Freelance video 4" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1cC23R4CDkZIlmk37tvv_WJELBU5m_Cwu/preview" title="Freelance video 5" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" src="https://drive.google.com/file/d/1Htw5vbWr7qIZB_d51MZimnRySztlYdSy/preview" title="Freelance video 6" allow="autoplay; fullscreen" allowfullscreen></iframe><iframe loading="lazy" class="vertical" src="https://www.youtube.com/embed/Zj5JPkKeCm4" title="Freelance video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></article>
+            <div class="freelance-logos" aria-label="Selected client logos">
+              <div class="logo-marquee">
+                <div class="logo-marquee-group">
+                  <div class="logo-marquee-item"><img src="Logo_of_JOOX.png" alt="JOOX" /></div>
+                  <div class="logo-marquee-item"><img src="mirror.png" alt="Mirror Thailand" /></div>
+                  <div class="logo-marquee-item"><img src="Universal TH.webp" alt="Universal Music Thailand" /></div>
+                  <div class="logo-marquee-item"><img src="1. Logo_TAT-01.png" alt="Tourism Authority of Thailand" /></div>
+                  <div class="logo-marquee-item"><img src="2. Logo_Amazing Thailand-01.png" alt="Amazing Thailand" /></div>
+                  <div class="logo-marquee-item"><img src="Philips_logo_new.svg.webp" alt="Philips" /></div>
+                  <div class="logo-marquee-item"><img src="NT_Logo.svg.webp" alt="NT" /></div>
+                  <div class="logo-marquee-item"><img src="one 31.png" alt="ONE 31" /></div>
+                  <div class="logo-marquee-item"><img src="fitflop.png" alt="fitflop" /></div>
+                  <div class="logo-marquee-item"><img src="konvy.webp" alt="Konvy" /></div>
+                </div>
+                <div class="logo-marquee-group" aria-hidden="true">
+                  <div class="logo-marquee-item"><img src="Logo_of_JOOX.png" alt="" /></div>
+                  <div class="logo-marquee-item"><img src="mirror.png" alt="" /></div>
+                  <div class="logo-marquee-item"><img src="Universal TH.webp" alt="" /></div>
+                  <div class="logo-marquee-item"><img src="1. Logo_TAT-01.png" alt="" /></div>
+                  <div class="logo-marquee-item"><img src="2. Logo_Amazing Thailand-01.png" alt="" /></div>
+                  <div class="logo-marquee-item"><img src="Philips_logo_new.svg.webp" alt="" /></div>
+                  <div class="logo-marquee-item"><img src="NT_Logo.svg.webp" alt="" /></div>
+                  <div class="logo-marquee-item"><img src="one 31.png" alt="" /></div>
+                  <div class="logo-marquee-item"><img src="fitflop.png" alt="" /></div>
+                  <div class="logo-marquee-item"><img src="konvy.webp" alt="" /></div>
+                </div>
+              </div>
             </div>
-          </div></article>
         </div>
       </section>
 
-      <footer id="contact"><p class="eyebrow">04 / Contact</p><h2>Let&rsquo;s make<br />something <i>clear.</i></h2><a class="mail" href="mailto:peerawutto@gmail.com">peerawutto@gmail.com &#8599;</a><div><p>&copy; <b>2026 Peerawut</b><br />/ Created with love, in collaboration with AI.</p><p>Bangkok, Thailand</p></div></footer>
-      <a class="floating-top" href="#top" aria-label="Back to top">&uarr;</a>
+      <section class="resume section-rule" id="resume">
+
+        <div class="section-heading">
+          <p class="eyebrow">Resume</p>
+          <p>A complete overview of my experience.</p>
+        </div>
+        <div class="resume-content">
+          <button class="resume-open" type="button" aria-haspopup="dialog" aria-controls="resume-dialog">View resume <span>&nearr;&#xfe0e;</span></button>
+
+        </div>
+      </section>
+
+      <div class="resume-dialog" id="resume-dialog" role="dialog" aria-modal="true" aria-label="Peerawut resume preview" hidden>
+        <div class="resume-dialog-panel">
+          <div class="resume-dialog-bar"><p class="eyebrow">Peerawut / Resume</p><button class="resume-close" type="button" aria-label="Close resume preview">&times;</button></div>
+          <iframe loading="lazy" src="peerawut_cv.pdf#page=1&view=FitH" title="Peerawut resume PDF"></iframe>
+          <a class="resume-download" href="peerawut_cv.pdf" target="_blank" rel="noopener">Open in a new tab &nearr;&#xfe0e;</a>
+        </div>
+      </div>
+
+      <footer id="contact"><p class="eyebrow">Contact</p><h2>Let&rsquo;s make<br />something <i>clear.</i></h2><div class="contact-links"><a class="mail" href="mailto:peerawutto@gmail.com">peerawutto@gmail.com &#8599;&#xfe0e;</a><a class="instagram-link" href="https://instagram.com/peerawutto" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg><span>peerawutto</span> &#8599;&#xfe0e;</a></div><div><p>&copy; <b>2026 Peerawut</b><br />/ Created with love, in collaboration with AI.</p><p>Bangkok, Thailand</p></div></footer>
+      <a class="floating-top" href="#company-work" aria-label="Back to Company work">&uarr;</a>
     </main>
     <script>
+      // This script block is intentionally left in place.
+      // The following script tags will be added after it.
       const company = document.querySelector('#company-work');
       const topButton = document.querySelector('.floating-top');
       const output = document.querySelector('#typewriter-text');
@@ -152,6 +194,18 @@
           slider.classList.remove('is-dragging');
         }));
       }
+
+      const resumeDialog = document.querySelector('#resume-dialog');
+      const resumeOpen = document.querySelector('.resume-open');
+      const resumeClose = document.querySelector('.resume-close');
+      const closeResume = () => { resumeDialog.hidden = true; };
+      resumeOpen?.addEventListener('click', () => { resumeDialog.hidden = false; });
+      resumeClose?.addEventListener('click', closeResume);
+      resumeDialog?.addEventListener('click', (event) => {
+        if (event.target === resumeDialog) closeResume();
+      });
+      addEventListener('keydown', (event) => { if (event.key === 'Escape' && !resumeDialog.hidden) closeResume(); });
     </script>
+    <script type="module" src="background.js"></script>
   </body>
 </html>
