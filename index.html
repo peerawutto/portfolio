@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260826" />
+    <link rel="stylesheet" href="styles.css?v=20260829" />
     <style>
       .freelance-logos { margin-top: 2rem; overflow: hidden; }
       .logo-marquee { display: flex; width: max-content; animation: logo-marquee 36s linear infinite; }
@@ -58,6 +58,10 @@
         </div>
       </section>
 
+      <section class="playground section-rule" id="playground">
+        <div class="section-heading"><p class="eyebrow">Selected work</p><p>Drag / scroll</p></div>
+        <div class="play-grid" aria-label="Selected work gallery"></div>
+      </section>
 
       <section class="experience section-rule" id="experience">
         <div class="section-heading"><p class="eyebrow">Experience</p><p>Roles and responsibilities</p></div>
@@ -120,7 +124,7 @@
         </div>
       </div>
 
-      <footer id="contact"><p class="eyebrow">Contact</p><h2>Let&rsquo;s make<br />something <i>clear.</i></h2><div class="contact-links"><a class="mail" href="mailto:peerawutto@gmail.com">peerawutto@gmail.com &#8599;&#xfe0e;</a><a class="instagram-link" href="https://instagram.com/peerawutto" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg><span>peerawutto</span> &#8599;&#xfe0e;</a></div><div><p>&copy; <b>2026 Peerawut</b><br />/ Created with love, in collaboration with AI.</p></div></footer>
+      <footer id="contact"><p class="eyebrow">Contact</p><h2><span class="footer-typewriter" id="footer-typewriter"></span></h2><div class="contact-links"><a class="mail" href="mailto:peerawutto@gmail.com">peerawutto@gmail.com &#8599;&#xfe0e;</a><a class="instagram-link" href="https://instagram.com/peerawutto" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg><span>peerawutto</span> &#8599;&#xfe0e;</a></div><div><p>&copy; <b>2026 Peerawut</b><br />/ Created with love, in collaboration with AI.</p></div></footer>
       <a class="floating-top" href="#company-work" aria-label="Back to Company work">&uarr;</a>
     </main>
     <script>
@@ -129,11 +133,13 @@
       const company = document.querySelector('#company-work');
       const topButton = document.querySelector('.floating-top');
       const output = document.querySelector('#typewriter-text');
+      const footerTypewriter = document.querySelector('#footer-typewriter');
       const heroVideo = document.querySelector('.hero-video');
       const hero = document.querySelector('.hero');
       const stickers = document.querySelectorAll('.hero-sticker');
       const roles = ['Video Editor', 'Motion Graphic Designer', 'Graphic Designer'];
       let role = 0, character = 0, deleting = false;
+      let footerTypewriterStarted = false;
       function type() {
         const text = roles[role];
         character += deleting ? -1 : 1;
@@ -143,8 +149,41 @@
         if (deleting && character === 0) { deleting = false; role = (role + 1) % roles.length; delay = 350; }
         setTimeout(type, delay);
       }
+      function runFooterTypewriter() {
+        if (!footerTypewriter || footerTypewriterStarted) return;
+        footerTypewriterStarted = true;
+        const words = ["Let’s", "make", "something", "clear."];
+        const variants = ['variant-serif', 'variant-tilt', 'variant-soft', 'variant-lift'];
+        footerTypewriter.innerHTML = '';
+
+        words.forEach((word, index) => {
+          const wordNode = document.createElement('span');
+          const variant = variants[Math.floor(Math.random() * variants.length)];
+          wordNode.textContent = word;
+          wordNode.className = `footer-word ${index < words.length - 1 ? 'footer-word--main' : 'footer-word--accent'} ${variant}`;
+
+          footerTypewriter.appendChild(wordNode);
+
+          requestAnimationFrame(() => {
+            wordNode.classList.add('is-visible');
+            setTimeout(() => {
+              wordNode.classList.add('is-final');
+              if (index === words.length - 1) {
+                footerTypewriter.classList.add('is-complete');
+              }
+            }, 340 + index * 220);
+          });
+        });
+      }
+      function checkFooterTypewriter() {
+        const footer = document.querySelector('#contact');
+        if (!footer || footerTypewriterStarted) return;
+        const rect = footer.getBoundingClientRect();
+        const shouldRun = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+        if (shouldRun) runFooterTypewriter();
+      }
       function toggleTopButton() { topButton.classList.toggle('is-visible', scrollY >= company.offsetTop - innerHeight / 2); }
-      addEventListener('scroll', toggleTopButton, { passive: true }); addEventListener('resize', toggleTopButton); toggleTopButton(); type();
+      addEventListener('scroll', () => { toggleTopButton(); checkFooterTypewriter(); }, { passive: true }); addEventListener('resize', () => { toggleTopButton(); checkFooterTypewriter(); }); toggleTopButton(); checkFooterTypewriter(); type();
 
       if (heroVideo) {
         heroVideo.muted = true;
@@ -175,6 +214,27 @@
 
       const slider = document.querySelector('.play-grid');
       if (slider) {
+        const sourceFrames = [...document.querySelectorAll('.experience .media iframe')];
+        const shuffledFrames = [...sourceFrames].sort(() => Math.random() - 0.5).slice(0, 8);
+
+        shuffledFrames.forEach((frame) => {
+          const clone = frame.cloneNode(true);
+          clone.setAttribute('loading', 'lazy');
+          clone.setAttribute('allowfullscreen', 'true');
+          clone.style.setProperty('background', 'transparent', 'important');
+          clone.style.setProperty('border', '0', 'important');
+          clone.style.setProperty('padding', '0', 'important');
+          clone.style.setProperty('outline', 'none', 'important');
+          clone.style.setProperty('margin', '0', 'important');
+          clone.style.setProperty('display', 'block', 'important');
+          clone.style.setProperty('width', '360px', 'important');
+          clone.style.setProperty('height', '220px', 'important');
+          clone.style.setProperty('min-height', '220px', 'important');
+          const title = clone.getAttribute('title') || 'Playground video';
+          clone.setAttribute('title', `${title} - Playground`);
+          slider.appendChild(clone);
+        });
+
         let isDragging = false;
         let startX = 0;
         let startScroll = 0;
