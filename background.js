@@ -109,11 +109,15 @@ function hexToRgb(hex) {
 function initStudioBackground(container) {
   if (!container) return;
 
+  // Reduce DPR on mobile for better performance
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+
   const renderer = new Renderer({
     webgl: 2,
     alpha: false,
     antialias: false,
-    dpr: Math.min(window.devicePixelRatio || 1, 2),
+    dpr: dpr,
   });
   const gl = renderer.gl;
   const canvas = gl.canvas;
