@@ -61,6 +61,10 @@
       <section class="playground section-rule" id="playground">
         <div class="section-heading"><p class="eyebrow">Selected work</p><p>Drag / scroll</p></div>
         <div class="play-grid" aria-label="Selected work gallery"></div>
+        <div class="play-controls" aria-label="Selected work navigation">
+          <button class="play-arrow play-arrow--prev" type="button" aria-label="Previous work">&#8592;</button>
+          <button class="play-arrow play-arrow--next" type="button" aria-label="Next work">&#8594;</button>
+        </div>
       </section>
 
       <section class="experience section-rule" id="experience">
@@ -264,6 +268,42 @@
 
         iframeElements.forEach((el) => observer.observe(el));
 
+        const getStepSize = () => {
+          const firstCard = slider.querySelector('iframe');
+          const gap = parseFloat(getComputedStyle(slider).gap || '20');
+          return firstCard ? firstCard.getBoundingClientRect().width + gap : 380;
+        };
+
+        const snapToNearestCard = () => {
+          const step = getStepSize();
+          const nextIndex = Math.round(slider.scrollLeft / step);
+          const targetLeft = nextIndex * step;
+          slider.scrollTo({ left: targetLeft, behavior: 'auto' });
+        };
+
+        const moveSelectedWork = (direction) => {
+          const step = getStepSize();
+          const nextIndex = Math.round(slider.scrollLeft / step) + direction;
+          slider.scrollTo({ left: nextIndex * step, behavior: 'smooth' });
+        };
+
+        document.querySelectorAll('.play-arrow').forEach((arrow) => {
+          arrow.addEventListener('click', () => {
+            const direction = arrow.classList.contains('play-arrow--prev') ? -1 : 1;
+            moveSelectedWork(direction);
+          });
+        });
+
+        // Keep wheel scrolling predictable so the gallery doesn't skip cards
+        slider.addEventListener('wheel', (event) => {
+          if (Math.abs(event.deltaY) < 4 && Math.abs(event.deltaX) < 4) return;
+          event.preventDefault();
+          const horizontalDelta = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+          const step = Math.min(Math.abs(horizontalDelta), 180) * Math.sign(horizontalDelta || event.deltaY || event.deltaX);
+          slider.scrollBy({ left: step, behavior: 'auto' });
+          requestAnimationFrame(snapToNearestCard);
+        }, { passive: false });
+
         // Only add drag listeners on desktop
         if (!isMobile) {
           let isDragging = false;
@@ -283,6 +323,7 @@
           ['pointerup', 'pointercancel'].forEach((eventName) => slider.addEventListener(eventName, () => {
             isDragging = false;
             slider.classList.remove('is-dragging');
+            requestAnimationFrame(snapToNearestCard);
           }));
         }
       }
