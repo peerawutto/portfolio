@@ -194,31 +194,27 @@
         heroVideo.play().catch(() => {});
       }
 
-      // Only enable sticker dragging on desktop
-      const isMobileStickers = window.matchMedia('(max-width: 768px)').matches;
-      if (!isMobileStickers) {
-        stickers.forEach((sticker) => {
-          sticker.addEventListener('pointerdown', (event) => {
-            const rect = sticker.getBoundingClientRect();
-            sticker.classList.add('is-dragging');
-            sticker.setPointerCapture(event.pointerId);
-            sticker.dataset.offsetX = event.clientX - rect.left;
-            sticker.dataset.offsetY = event.clientY - rect.top;
-          });
-          sticker.addEventListener('pointermove', (event) => {
-            if (!sticker.classList.contains('is-dragging')) return;
-            const heroRect = hero.getBoundingClientRect();
-            const rect = sticker.getBoundingClientRect();
-            const left = Math.min(Math.max(event.clientX - heroRect.left - Number(sticker.dataset.offsetX), 0), heroRect.width - rect.width);
-            const top = Math.min(Math.max(event.clientY - heroRect.top - Number(sticker.dataset.offsetY), 0), heroRect.height - rect.height);
-            sticker.style.left = `${left}px`;
-            sticker.style.top = `${top}px`;
-            sticker.style.right = 'auto';
-            sticker.style.bottom = 'auto';
-          });
-          ['pointerup', 'pointercancel'].forEach((eventName) => sticker.addEventListener(eventName, () => sticker.classList.remove('is-dragging')));
+      stickers.forEach((sticker) => {
+        sticker.addEventListener('pointerdown', (event) => {
+          const rect = sticker.getBoundingClientRect();
+          sticker.classList.add('is-dragging');
+          sticker.setPointerCapture(event.pointerId);
+          sticker.dataset.offsetX = event.clientX - rect.left;
+          sticker.dataset.offsetY = event.clientY - rect.top;
         });
-      }
+        sticker.addEventListener('pointermove', (event) => {
+          if (!sticker.classList.contains('is-dragging')) return;
+          const heroRect = hero.getBoundingClientRect();
+          const rect = sticker.getBoundingClientRect();
+          const left = Math.min(Math.max(event.clientX - heroRect.left - Number(sticker.dataset.offsetX), 0), heroRect.width - rect.width);
+          const top = Math.min(Math.max(event.clientY - heroRect.top - Number(sticker.dataset.offsetY), 0), heroRect.height - rect.height);
+          sticker.style.left = `${left}px`;
+          sticker.style.top = `${top}px`;
+          sticker.style.right = 'auto';
+          sticker.style.bottom = 'auto';
+        });
+        ['pointerup', 'pointercancel'].forEach((eventName) => sticker.addEventListener(eventName, () => sticker.classList.remove('is-dragging')));
+      });
 
       const slider = document.querySelector('.play-grid');
       const isMobile = window.matchMedia('(max-width: 768px)').matches;
