@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="favicon.svg?v=2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css?v=20260917" />
     <style>
       .freelance-logos { margin-top: 2rem; overflow: hidden; }
@@ -24,7 +24,7 @@
   </head>
   <body>
     <main>
-      <nav class="nav" aria-label="Main navigation"><a class="wordmark" href="#top">PW</a><p>Bangna<br />Bangkok, TH</p><a href="#contact">Contact &#8599;&#xfe0e;</a></nav>
+      <nav class="nav" aria-label="Main navigation"><a class="wordmark" href="#top">PW</a><p>Bangna<br />Bangkok, TH</p><a class="nav-contact" href="#contact">Contact &#8599;&#xfe0e;</a><div class="language-toggle" role="group" aria-label="Language / ภาษา"><button type="button" data-language="en" aria-label="English" aria-pressed="true">EN</button><button type="button" data-language="th" aria-label="ภาษาไทย" aria-pressed="false">TH</button></div></nav>
       <header class="hero" id="top" style="background-color: #d8dfdf;">
         <div id="hero-background" class="absolute inset-0 overflow-hidden" aria-hidden="true"></div>
         <div class="hero-title-group"><h1>PEERAWUT<span>.</span></h1><p class="typewriter" aria-label="Video Editor, Motion Graphic Designer, Graphic Designer"><span id="typewriter-text" aria-hidden="true">Video Editor</span></p></div>
@@ -140,7 +140,7 @@
         <div class="resume-dialog-panel">
           <div class="resume-dialog-bar"><p class="eyebrow">Peerawut / Resume</p><button class="resume-close" type="button" aria-label="Close resume preview">&times;</button></div>
           <iframe loading="lazy" src="peerawut_cv.pdf#page=1&view=FitH" title="Peerawut resume PDF"></iframe>
-          <a class="resume-download" href="peerawut_cv.pdf" target="_blank" rel="noopener">Open in a new tab &nearr;&#xfe0e;</a> 
+          <a class="resume-download" href="peerawut_cv.pdf" target="_blank" rel="noopener">Open in a new tab &nearr;&#xfe0e;</a>
         </div>
       </div>
 
@@ -173,7 +173,7 @@
       function runFooterTypewriter() {
         if (!footerTypewriter || footerTypewriterStarted) return;
         footerTypewriterStarted = true;
-        const words = ["Let’s", "make", "something", "clear."];
+        const words = document.documentElement.lang === 'th' ? ['มาทำไอเดีย', 'ให้เป็นจริง', 'ไปด้วยกัน'] : ["Let’s", "make", "something", "clear."];
         const variants = ['variant-serif', 'variant-tilt', 'variant-soft', 'variant-lift'];
         footerTypewriter.innerHTML = '';
 
@@ -302,6 +302,111 @@
         if (event.target === resumeDialog) closeResume();
       });
       addEventListener('keydown', (event) => { if (event.key === 'Escape' && !resumeDialog.hidden) closeResume(); });
+
+      const languageToggle = document.querySelector('.language-toggle');
+      const originalCopy = [...document.querySelectorAll('.featured-work h2, .featured-work p, .featured-work .text-link, .capability-grid h2, .capability-grid p, .capability-grid .text-link, #about .text-link, .more-work a, .experience article > div > p')].map(element => [element, element.innerHTML]);
+      const extraThai = {
+        '.nav > p': 'บางนา<br>กรุงเทพฯ ประเทศไทย',
+        '.more-work .eyebrow': 'ผลงานอื่น ๆ',
+        '.company-list a[href="#adtech"] em': '2024 – ปัจจุบัน',
+        '.company-list a[href="#go-grrrls"] em': 'ภาพสำหรับอีเวนต์',
+        '#adtech > div > small': 'นักออกแบบสื่อบรอดแคสต์ และมัลติมีเดีย',
+        '#adtech > div:nth-of-type(2) > small': 'พ.ย. 2024 – ปัจจุบัน',
+        '#konvy > div > small': 'นักออกแบบวิดีโอคอนเทนต์ และกราฟิกอาวุโส',
+        '#konvy > div:nth-of-type(2) > small': 'ก.พ. 2024 – ต.ค. 2024',
+        '#exotic > div > small': 'นักตัดต่อวิดีโอ / ช่างวิดีโอ',
+        '#exotic > div:nth-of-type(2) > small': 'พ.ค. 2022 – ก.พ. 2024',
+        '#joox > div > small': 'นักตัดต่อวิดีโอ',
+        '#joox > div:nth-of-type(2) > small': 'มิ.ย. 2019 – เม.ย. 2022',
+        '#go-grrrls > div > small': 'นักออกแบบโมชั่นกราฟิก',
+        '#freelance > div > small': 'นักออกแบบกราฟิก และโมชั่น',
+        '#freelance > div:nth-of-type(2) > small': 'ลูกค้าบางส่วน',
+        '.resume-dialog-bar .eyebrow': 'Peerawut / เรซูเม่',
+        '.resume-download': 'เปิดในแท็บใหม่ ↗',
+        '#contact > .eyebrow': 'ติดต่อ',
+        '#contact > div:last-child > p': '© <b>2026 Peerawut</b><br>/ ทำด้วยรัก ร่วมกับ AI',
+        '.hero-sticker-years': 'กว่า 7 ปี<br>กับการ<br>สร้างสรรค์ผลงาน',
+        '.hero-sticker-stock': 'มือหา<br>stockfootage<br>มือฉมัง',
+        '.hero-sticker-ideas': 'สร้างสรรค์<br>ไอเดียให้<br>เคลื่อนไหว',
+        '.hero-sticker-switch': 'เจ้าของ<br>NINTENDO<br>SWITCH 2 :)'
+      };
+      const extraCopy = Object.entries(extraThai).map(([selector, thai]) => {
+        const element = document.querySelector(selector);
+        return { element, thai, english: element?.innerHTML };
+      });
+      const translations = {
+        en: {
+          toggle: 'ไทย', contact: 'Contact ↗︎', hero: '7+ years connecting ideas, design<br>and moving image.', explore: 'Explore work ↓', resume: 'Resume ↗︎',
+          selected: '01 / Selected work', selectedSub: 'Across disciplines &amp; industries', capabilities: '02 / What I bring', capabilitiesSub: 'From concept through production',
+          aboutLabel: 'One designer.<br>Multiple disciplines.', aboutTitle: 'From the first idea<br>to the final frame.', aboutText: 'I work across graphic design, motion and video, bringing 7+ years of experience in music, culture, beauty and brand communication. My work spans concepts and storyboards, shoots, campaign artwork, editing and animation.',
+          experienceAcross: 'Experience across teams &amp; industries', experience: 'Experience', rolesLabel: 'Roles and responsibilities', resumeLabel: 'Resume', resumeText: 'A complete overview of my experience.', resumeButton: 'View resume <span>↗︎</span>',
+          workButton: 'View selected work', roles: ['Video Editor', 'Motion Graphic Designer', 'Graphic Designer']
+        },
+        th: {
+          toggle: 'EN', contact: 'ติดต่อ ↗︎', hero: 'ประสบการณ์กว่า 7 ปี<br>ที่เชื่อมไอเดีย ดีไซน์  และภาพเคลื่อนไหวเข้าด้วยกัน', explore: 'ดูผลงาน ↓', resume: 'เรซูเม่ ↗︎',
+          selected: '01 / ผลงานที่คัดมา', selectedSub: 'หลากหลายทักษะ และอุตสาหกรรม', capabilities: '02 / สิ่งที่ผมทำได้', capabilitiesSub: 'ตั้งแต่คอนเซปต์จนถึงงานโปรดักชัน',
+          aboutLabel: 'นักออกแบบคนเดียว<br>กับหลายทักษะ.', aboutTitle: 'ตั้งแต่ไอเดียแรก<br>จนถึงเฟรมสุดท้าย.', aboutText: 'ผมทำงานครอบคลุมกราฟิกดีไซน์ โมชัน  และวิดีโอ พร้อมประสบการณ์กว่า 7 ปีในสายดนตรี วัฒนธรรม บิวตี้  และงานสื่อสารแบรนด์ งานของผมตั้งแต่คิดคอนเซปต์ และสตอรี่บอร์ด ถ่ายทำ ออกแบบงานแคมเปญ ตัดต่อ ไปจนถึงแอนิเมชัน.',
+          experienceAcross: 'ประสบการณ์จากหลากหลายทีม และอุตสาหกรรม', experience: 'ประสบการณ์ทำงาน', rolesLabel: 'บทบาท และความรับผิดชอบ', resumeLabel: 'เรซูเม่', resumeText: 'ภาพรวมประสบการณ์การทำงานของผม.', resumeButton: 'ดูเรซูเม่ <span>↗︎</span>',
+          workButton: 'ดูตัวอย่างผลงาน', roles: ['วิดีโอเอดิเตอร์', 'โมชั่นกราฟิกดีไซเนอร์', 'กราฟิกดีไซเนอร์']
+        }
+      };
+      const setText = (selector, value) => { const element = document.querySelector(selector); if (element) element.innerHTML = value; };
+      const applyLanguage = (language) => {
+        originalCopy.forEach(([element, html]) => { element.innerHTML = html; });
+        extraCopy.forEach(({element, thai, english}) => { if (element) element.innerHTML = language === 'th' ? thai : english; });
+        const t = translations[language];
+        document.documentElement.lang = language === 'th' ? 'th' : 'en';
+        footerTypewriterStarted = false;
+        runFooterTypewriter();
+        languageToggle.querySelectorAll('[data-language]').forEach(button => {
+          button.setAttribute('aria-pressed', String(button.dataset.language === language));
+        });
+        setText('.nav-contact', t.contact); setText('.hero-foot > p', t.hero);
+        setText('.hero-actions a[href="#playground"]', t.explore); setText('.hero-actions a[href="peerawut_cv.pdf"]', t.resume);
+        setText('#playground .section-heading > p:first-child', t.selected); setText('#playground .section-heading > p:last-child', t.selectedSub);
+        setText('#capabilities .section-heading > p:first-child', t.capabilities); setText('#capabilities .section-heading > p:last-child', t.capabilitiesSub);
+        setText('#about .eyebrow', t.aboutLabel); setText('#about .about-copy h2', t.aboutTitle); setText('#about .about-copy > p', t.aboutText);
+        setText('#company-work .section-heading > p', t.experienceAcross); setText('#experience .section-heading > p:first-child', t.experience); setText('#experience .section-heading > p:last-child', t.rolesLabel);
+        setText('#resume .eyebrow', t.resumeLabel); setText('#resume .section-heading > p:last-child', t.resumeText); setText('.resume-open', t.resumeButton);
+        document.querySelectorAll('.work-samples summary span').forEach((label) => { label.textContent = t.workButton; });
+        if (language === 'th') {
+          const featured = [
+            ['งานแคมเปญ และมัลติมีเดีย', 'การสื่อสารแบรนด์<br>ในหลากหลายรูปแบบ', 'ออกแบบกราฟิกสำหรับแคมเปญ และโซเชียล ตัดต่อ แอนิเมชัน  และดูแลทิศทางภาพสำหรับทีมระดับภูมิภาค'],
+            ['โมชั่นดีไซน์', 'ภาพเคลื่อนไหว<br>สำหรับฟลอร์เต้นรำ', 'ออกแบบภาพบนจอให้เข้ากับธีม และบรรยากาศของแต่ละอีเวนต์'],
+            ['วิดีโอ และโปรดักชัน', 'เล่าเรื่องตั้งแต่<br>คอนเซปต์จนถึงตัดต่อ', 'ตั้งแต่คิดคอนเซปต์ สตอรี่บอร์ด ถ่ายทำ ออกแบบโมชั่น  และดูแลงานหลังการถ่ายทำ']
+          ];
+          document.querySelectorAll('.featured-work').forEach((card, index) => { const [discipline, title, copy] = featured[index]; card.querySelector('.work-discipline').textContent = discipline; card.querySelector('h2').innerHTML = title; card.querySelector('p:not(.work-discipline)').textContent = copy; card.querySelector('.text-link').textContent = 'เพิ่มเติม ↗︎'; });
+          const capabilities = [
+            ['กราฟิกดีไซน์', 'งานอาร์ตเวิร์กสำหรับแคมเปญ กราฟิกโซเชียล โลโก้  และการสื่อสารสินค้า', 'โปรเจกต์ฟรีแลนซ์ ↗︎'],
+            ['โมชั่นดีไซน์', 'แอนิเมชัน ภาพสำหรับอีเวนต์  และโมชั่นกราฟิกสำหรับแบรนด์ และดนตรี', 'ชิ้นงานตัวอย่าง ↗︎'],
+            ['วิดีโอ และโปรดักชัน', 'คอนเซปต์ สตอรี่บอร์ด ถ่ายทำ ตัดต่อ เกรดสี  และงานหลังการถ่ายทำ', 'โปรเจกต์วิดีโอ ↗︎']
+          ];
+          document.querySelectorAll('.capability-grid > div').forEach((card, index) => { const [title, copy, link] = capabilities[index]; card.querySelector('h2').textContent = title; card.querySelector('p').textContent = copy; card.querySelector('.text-link').textContent = link; });
+          document.querySelector('#about .text-link').textContent = 'ดูประสบการณ์ทำงาน ↗︎';
+          document.querySelectorAll('.more-work a').forEach((link, index) => { link.textContent = ['กราฟิก และโมชั่น / ฟรีแลนซ์ ↗︎', 'บิวตี้ และโซเชียล / Konvy ↗︎', 'ดนตรี และเอ็นเตอร์เทนเมนต์ / JOOX ↗︎'][index]; });
+          const descriptions = [
+            'ดูแลงานครีเอทีฟ และสื่อให้ทีมฮ่องกง และไทย ครอบคลุมกราฟิกสำหรับแคมเปญ และโซเชียล การตัดต่อ เกรดสี โมชั่นกราฟิก แอนิเมชัน การสร้างภาพ และวิดีโอด้วย AI รวมถึงวางทิศทางภาพให้ทีมในภูมิภาค',
+            'คิด และผลิตคอนเทนต์สำหรับสินค้า แคมเปญ  และโฆษณาบนโซเชียล ตัดต่อวิดีโอ ทำโมชั่นกราฟิก  และทำงานร่วมกับทีมการตลาดเพื่อให้งานภาพสอดคล้องกับแบรนด์',
+            'พัฒนาคอนเซปต์ และสตอรี่บอร์ด กำกับการถ่ายทำทั้งนอกสถานที่ และในสตูดิโอ ออกแบบโลโก้ และโมชั่น วางแผนแสง และเสียง  และประสานงานทีมหลังการถ่ายทำ',
+            'ทำงานร่วมกับโปรดิวเซอร์เพื่อพัฒนาไอเดีย และคอนเทนต์วิดีโอ ตัดต่อฟุตเทจ ออกแบบโมชั่นกราฟิก และองค์ประกอบภาพ พร้อมดูแลให้งานสอดคล้องกับแบรนด์',
+            'สร้างโมชั่นกราฟิกสำหรับ Go Grrrls เพื่อแสดงบนจอตลอดงาน โดยพัฒนาทิศทางภาพให้เข้ากับธีม และบรรยากาศของแต่ละปาร์ตี้',
+            'วางแผนงานโซเชียล ประสานงานโปรเจกต์พิเศษ  และพัฒนาอาร์ตเวิร์กกับโมชั่นกราฟิกสำหรับการสื่อสารสินค้า แคมเปญ  และผลงานศิลปิน ลูกค้าได้แก่ Mirror Thailand, ONE31, NT, Philips, การท่องเที่ยวแห่งประเทศไทย  และ Universal Music'
+          ];
+          document.querySelectorAll('.experience article > div > p').forEach((paragraph, index) => { paragraph.textContent = descriptions[index]; });
+        }
+        roles.splice(0, roles.length, ...t.roles); role = 0; character = 0; deleting = false; output.textContent = roles[0];
+        document.querySelector('.typewriter').setAttribute('aria-label', t.roles.join(', '));
+        document.querySelector('.resume-close').setAttribute('aria-label', language === 'th' ? 'ปิดเรซูเม่' : 'Close resume preview');
+        document.querySelector('.floating-top').setAttribute('aria-label', language === 'th' ? 'กลับไปที่ประสบการณ์ทำงาน' : 'Back to Company work');
+      };
+      let activeLanguage = 'en';
+      applyLanguage(activeLanguage);
+      languageToggle.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-language]');
+        if (!button || button.dataset.language === activeLanguage) return;
+        activeLanguage = button.dataset.language;
+        applyLanguage(activeLanguage);
+      });
     </script>
     <script type="module" src="background.js"></script>
   </body>
