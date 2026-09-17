@@ -9,10 +9,12 @@ main { overflow: hidden; }
 .overflow-hidden { overflow: hidden; }
 .nav, .section-heading, .hero-foot, .about { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
 .eyebrow, small, em { margin: 0; font: 11px/1.35 "DM Mono", monospace; letter-spacing: -0.04em; text-transform: uppercase; }
-.nav { padding: 20px 24px 18px; font: 11px/1.35 "DM Mono", monospace; }
+.nav { padding: 20px 24px 18px; min-height: 86px; font: 11px/1.35 "DM Mono", monospace; }
 .language-toggle { display: inline-flex; grid-column: 11; align-self: start; justify-self: end; padding: 3px; gap: 2px; border: 1px solid var(--ink); border-radius: 6px; color: var(--ink); font: 11px/1 "DM Mono", monospace; }
 .language-toggle button { padding: 8px; border: 0; border-radius: 3px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
 .language-toggle button[aria-pressed="true"] { background: var(--acid); color: var(--ink); }
+html .nav .language-toggle { width: 76px; height: 38px; box-sizing: border-box; }
+html .nav .language-toggle button { width: 33px; height: 30px; padding: 0; line-height: 30px; letter-spacing: 0; font-size: 11px; flex: none; }
 .nav-contact { grid-column: 12; text-align: right; }
 .nav .wordmark, .nav > p, .nav-contact, .nav .language-toggle { grid-row: 1; }
 .nav .language-toggle { grid-column: 10 / span 2; }
@@ -21,7 +23,6 @@ html[lang="th"] :is(p, small, em, a, button, summary, h2, .typewriter, .hero-sti
 html[lang="th"] :is(.text-link, .resume-open, .footer-word) { font-family: Manrope, "Noto Sans Thai", sans-serif; }
 html[lang="th"] :is(.nav, .eyebrow, small, em, .hero-actions a, .work-samples summary, .hero-sticker, .resume-download), .nav .language-toggle { font-family: "DM Mono", "Noto Sans Thai", monospace; }
 html[lang="th"] .typewriter { font-size: clamp(18px, 3vw, 50px); }
-html[lang="th"] footer h2 { font-size: clamp(32px, 6vw, 90px); }
 @media (max-width: 700px) {
   .nav .wordmark { grid-column: 1; }
   .nav > p { grid-column: 2 / span 2; }
@@ -57,6 +58,10 @@ html[lang="th"] footer h2 { font-size: clamp(32px, 6vw, 90px); }
 .footer-word--accent { font-family: Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.04em; }
 .footer-word.is-final { opacity: 1; transform: translateY(0) rotate(0) scale(1); font-family: Manrope, sans-serif; font-style: normal; font-weight: 800; letter-spacing: -0.08em; }
 .footer-word--accent.is-final { font-family: Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.04em; }
+html[lang="th"] .footer-word:is(.variant-serif, .variant-tilt, .variant-lift):not(.is-final),
+html[lang="th"] .footer-word--accent.is-final { font-family: "Noto Serif Thai", serif; font-style: italic; font-weight: 400; }
+html[lang="th"] .footer-word { line-height: 1.4; letter-spacing: normal; white-space: nowrap; }
+html[lang="th"] .footer-typewriter { display: flex; flex-direction: column; align-items: flex-start; gap: .12em; }
 .footer-typewriter::after { content: "_"; margin-left: 0.08em; font-family: "DM Mono", monospace; animation: blink 0.8s steps(1) infinite; }
 .footer-typewriter.is-complete::after { display: none; }
 .hero-foot { align-items: end; }
@@ -209,11 +214,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 }
 @media (max-width: 700px) {
   .hero { min-height: 600px; padding: 30px 16px 24px; }
-  .nav { display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; align-items: center; gap: 10px; height: 90px; }
   .nav .wordmark { order: 0; flex: none; }
   .nav > p { order: 1; flex: 1; min-width: 0; font-size: 10px; }
   .nav .language-toggle { order: 2; flex: none; align-self: center; }
-  .nav .nav-contact { order: 3; flex: none; white-space: nowrap; }
+  .nav .nav-contact { order: 3; flex: 0 0 62px; white-space: nowrap; }
   .nav .language-toggle button { padding: 8px 6px; }
   .hero-foot { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
   .hero-foot p { font-size: 15px; }

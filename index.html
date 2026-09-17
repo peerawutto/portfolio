@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="favicon.svg?v=2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Noto+Serif+Thai:wght@400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css?v=20260917" />
     <style>
       .freelance-logos { margin-top: 2rem; overflow: hidden; }
@@ -166,16 +166,30 @@
       }
       if (!matchMedia('(prefers-reduced-motion: reduce)').matches) type();
       const footerTypewriter = document.querySelector('#footer-typewriter');
+      const footerHeading = footerTypewriter.closest('h2');
       const heroVideo = document.querySelector('.hero-video');
       const hero = document.querySelector('.hero');
       const stickers = document.querySelectorAll('.hero-sticker');
       let footerTypewriterStarted = false;
+      function fitThaiFooterHeading() {
+        footerHeading.style.fontSize = '';
+        if (document.documentElement.lang !== 'th') return;
+        const words = [...footerTypewriter.querySelectorAll('.footer-word')];
+        if (!words.length) return;
+        const baseSize = parseFloat(getComputedStyle(footerHeading).fontSize);
+        const unfinished = words.filter(word => !word.classList.contains('is-final'));
+        unfinished.forEach(word => word.classList.add('is-final'));
+        const widestWord = Math.max(...words.map(word => word.getBoundingClientRect().width));
+        unfinished.forEach(word => word.classList.remove('is-final'));
+        footerHeading.style.fontSize = `${baseSize * Math.min(1, (footerHeading.clientWidth - 4) / widestWord)}px`;
+      }
       function runFooterTypewriter() {
         if (!footerTypewriter || footerTypewriterStarted) return;
         footerTypewriterStarted = true;
-        const words = document.documentElement.lang === 'th' ? ['มาทำไอเดีย', 'ให้เป็นจริง', 'ไปด้วยกัน'] : ["Let’s", "make", "something", "clear."];
+        const words = document.documentElement.lang === 'th' ? ['มาทำไอเดียให้เป็นจริง', 'ไปด้วยกัน'] : ["Let’s", "make", "something", "clear."];
         const variants = ['variant-serif', 'variant-tilt', 'variant-soft', 'variant-lift'];
         footerTypewriter.innerHTML = '';
+        footerTypewriter.classList.remove('is-complete');
 
         words.forEach((word, index) => {
           const wordNode = document.createElement('span');
@@ -195,6 +209,7 @@
             }, 340 + index * 220);
           });
         });
+        fitThaiFooterHeading();
       }
       function checkFooterTypewriter() {
         const footer = document.querySelector('#contact');
@@ -204,7 +219,8 @@
         if (shouldRun) runFooterTypewriter();
       }
       function toggleTopButton() { topButton.classList.toggle('is-visible', scrollY >= company.offsetTop - innerHeight / 2); }
-      addEventListener('scroll', () => { toggleTopButton(); checkFooterTypewriter(); }, { passive: true }); addEventListener('resize', () => { toggleTopButton(); checkFooterTypewriter(); }); toggleTopButton(); checkFooterTypewriter();
+      addEventListener('scroll', () => { toggleTopButton(); checkFooterTypewriter(); }, { passive: true }); addEventListener('resize', () => { toggleTopButton(); checkFooterTypewriter(); fitThaiFooterHeading(); }); toggleTopButton(); checkFooterTypewriter();
+      document.fonts.ready.then(fitThaiFooterHeading);
 
       if (heroVideo) {
         heroVideo.muted = true;
@@ -324,7 +340,7 @@
         '.resume-dialog-bar .eyebrow': 'Peerawut / เรซูเม่',
         '.resume-download': 'เปิดในแท็บใหม่ ↗',
         '#contact > .eyebrow': 'ติดต่อ',
-        '#contact > div:last-child > p': '© <b>2026 Peerawut</b><br>/ ทำด้วยรัก ร่วมกับ AI',
+        '#contact > div:last-child > p': '© <b>2026 Peerawut</b><br>/ สร้างด้วยรัก ร่วมกับ AI',
         '.hero-sticker-years': 'กว่า 7 ปี<br>กับการ<br>สร้างสรรค์ผลงาน',
         '.hero-sticker-stock': 'มือหา<br>stockfootage<br>มือฉมัง',
         '.hero-sticker-ideas': 'สร้างสรรค์<br>ไอเดียให้<br>เคลื่อนไหว',
@@ -356,8 +372,11 @@
         extraCopy.forEach(({element, thai, english}) => { if (element) element.innerHTML = language === 'th' ? thai : english; });
         const t = translations[language];
         document.documentElement.lang = language === 'th' ? 'th' : 'en';
+        fitThaiFooterHeading();
         footerTypewriterStarted = false;
-        runFooterTypewriter();
+        footerTypewriter.innerHTML = '';
+        footerTypewriter.classList.remove('is-complete');
+        checkFooterTypewriter();
         languageToggle.querySelectorAll('[data-language]').forEach(button => {
           button.setAttribute('aria-pressed', String(button.dataset.language === language));
         });
