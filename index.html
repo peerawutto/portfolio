@@ -35,7 +35,7 @@
       </header>
 
       <section class="playground section-rule" id="playground">
-        <div class="section-heading"><p class="eyebrow">01 / Selected work</p><p>Across disciplines &amp; industries</p></div>
+        <div class="section-heading"><p class="eyebrow">Selected work</p><p>Across disciplines &amp; industries</p></div>
         <div class="featured-grid">
           <article class="featured-work">
             <a class="work-cover" href="#adtech"><img src="https://drive.google.com/thumbnail?id=1GPSWD0efvGQcxTmpb70hJUlC2GIOiPxM&amp;sz=w1000" alt="AdTech campaign video" loading="lazy" /><span class="cover-label">AdTech Innovation &nearr;</span></a>
@@ -54,7 +54,7 @@
       </section>
 
       <section class="capabilities section-rule" id="capabilities">
-        <div class="section-heading"><p class="eyebrow">02 / What I bring</p><p>From concept through production</p></div>
+        <div class="section-heading"><p class="eyebrow">What I bring</p><p>From concept through production</p></div>
         <div class="capability-grid">
           <div><span>01</span><h2>Graphic design</h2><p>Campaign artwork, social graphics, logos and product communication.</p><a class="text-link" href="#freelance">Freelance projects &nearr;</a></div>
           <div><span>02</span><h2>Motion design</h2><p>Animation, event visuals and motion graphics for brands and music.</p><a class="text-link" href="#go-grrrls">Event visuals &nearr;</a></div>
@@ -151,6 +151,7 @@
       // This script block is intentionally left in place.
       // The following script tags will be added after it.
       const company = document.querySelector('#company-work');
+      const nav = document.querySelector('.nav');
       const topButton = document.querySelector('.floating-top');
       const output = document.querySelector('#typewriter-text');
       const roles = ['Video Editor', 'Motion Graphic Designer', 'Graphic Designer'];
@@ -219,7 +220,8 @@
         if (shouldRun) runFooterTypewriter();
       }
       function toggleTopButton() { topButton.classList.toggle('is-visible', scrollY >= company.offsetTop - innerHeight / 2); }
-      addEventListener('scroll', () => { toggleTopButton(); checkFooterTypewriter(); }, { passive: true }); addEventListener('resize', () => { toggleTopButton(); checkFooterTypewriter(); fitThaiFooterHeading(); }); toggleTopButton(); checkFooterTypewriter();
+      function updateNavTransparency() { nav.classList.toggle('is-scrolled', scrollY > 8); }
+      addEventListener('scroll', () => { toggleTopButton(); checkFooterTypewriter(); updateNavTransparency(); }, { passive: true }); addEventListener('resize', () => { toggleTopButton(); checkFooterTypewriter(); fitThaiFooterHeading(); }); toggleTopButton(); checkFooterTypewriter(); updateNavTransparency();
       document.fonts.ready.then(fitThaiFooterHeading);
 
       if (heroVideo) {
@@ -353,16 +355,16 @@
       const translations = {
         en: {
           toggle: 'ไทย', contact: 'Contact ↗︎', hero: '7+ years connecting ideas, design<br>and moving image.', explore: 'Explore work ↓', resume: 'Resume ↗︎',
-          selected: '01 / Selected work', selectedSub: 'Across disciplines &amp; industries', capabilities: '02 / What I bring', capabilitiesSub: 'From concept through production',
+          selected: 'Selected work', selectedSub: 'Across disciplines &amp; industries', capabilities: 'Experience', capabilitiesSub: 'From concept through production',
           aboutLabel: 'One designer.<br>Multiple disciplines.', aboutTitle: 'From the first idea<br>to the final frame.', aboutText: 'I work across graphic design, motion and video, bringing 7+ years of experience in music, culture, beauty and brand communication. My work spans concepts and storyboards, shoots, campaign artwork, editing and animation.',
           experienceAcross: 'Experience across teams &amp; industries', experience: 'Experience', rolesLabel: 'Roles and responsibilities', resumeLabel: 'Resume', resumeText: 'A complete overview of my experience.', resumeButton: 'View resume <span>↗︎</span>',
           workButton: 'View selected work', roles: ['Video Editor', 'Motion Graphic Designer', 'Graphic Designer']
         },
         th: {
           toggle: 'EN', contact: 'ติดต่อ ↗︎', hero: 'ประสบการณ์กว่า 7 ปี<br>ที่เชื่อมไอเดีย ดีไซน์  และภาพเคลื่อนไหวเข้าด้วยกัน', explore: 'ดูผลงาน ↓', resume: 'เรซูเม่ ↗︎',
-          selected: '01 / ผลงานที่คัดมา', selectedSub: 'หลากหลายทักษะ และอุตสาหกรรม', capabilities: '02 / สิ่งที่ผมทำได้', capabilitiesSub: 'ตั้งแต่คอนเซปต์จนถึงงานโปรดักชัน',
-          aboutLabel: 'นักออกแบบคนเดียว<br>กับหลายทักษะ.', aboutTitle: 'ตั้งแต่ไอเดียแรก<br>จนถึงเฟรมสุดท้าย.', aboutText: 'ผมทำงานครอบคลุมกราฟิกดีไซน์ โมชัน  และวิดีโอ พร้อมประสบการณ์กว่า 7 ปีในสายดนตรี วัฒนธรรม บิวตี้  และงานสื่อสารแบรนด์ งานของผมตั้งแต่คิดคอนเซปต์ และสตอรี่บอร์ด ถ่ายทำ ออกแบบงานแคมเปญ ตัดต่อ ไปจนถึงแอนิเมชัน.',
-          experienceAcross: 'ประสบการณ์จากหลากหลายทีม และอุตสาหกรรม', experience: 'ประสบการณ์ทำงาน', rolesLabel: 'บทบาท และความรับผิดชอบ', resumeLabel: 'เรซูเม่', resumeText: 'ภาพรวมประสบการณ์การทำงานของผม.', resumeButton: 'ดูเรซูเม่ <span>↗︎</span>',
+          selected: 'ผลงานที่คัดมา', selectedSub: 'หลากหลายทักษะ และอุตสาหกรรม', capabilities: 'ประสบการณ์', capabilitiesSub: 'ตั้งแต่คอนเซปต์จนถึงงานโปรดักชัน',
+          aboutLabel: 'รับมือ<br>กับงานหลากหลายแบบ', aboutTitle: 'ตั้งแต่ไอเดียแรก<br>จนถึงเฟรมสุดท้าย', aboutText: 'ผมทำงานครอบคลุมกราฟิกดีไซน์ โมชัน  และวิดีโอ พร้อมประสบการณ์กว่า 7 ปีในสายดนตรี วัฒนธรรม บิวตี้  และงานสื่อสารแบรนด์ งานของผมตั้งแต่คิดคอนเซปต์ และสตอรี่บอร์ด ถ่ายทำ ออกแบบงานแคมเปญ ตัดต่อ ไปจนถึงแอนิเมชัน',
+          experienceAcross: 'ประสบการณ์จากหลากหลายทีม และอุตสาหกรรม', experience: 'ประสบการณ์ทำงาน', rolesLabel: 'บทบาท และความรับผิดชอบ', resumeLabel: 'เรซูเม่', resumeText: 'ภาพรวมประสบการณ์การทำงานของผม', resumeButton: 'ดูเรซูเม่ <span>↗︎</span>',
           workButton: 'ดูตัวอย่างผลงาน', roles: ['วิดีโอเอดิเตอร์', 'โมชั่นกราฟิกดีไซเนอร์', 'กราฟิกดีไซเนอร์']
         }
       };
